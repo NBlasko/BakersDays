@@ -1,0 +1,46 @@
+.App {
+     padding:0;
+     margin:0;
+     height:100%;
+}
+
+.btn-custom-inline {
+    display: inline;
+    }
+
+.btn-lg{
+      width: 19.9%;
+    }
+
+.btn-success{
+      width: 60%;
+      font-size:3vw;
+  
+    }
+
+.btn-warning{
+      width: 39%;
+      font-size:3vw;
+    }
+   
+.bg-dark{
+      padding: 5%;
+      line-height: 30%;
+      font-size:8vw;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+.btn-outline-primary{
+      font-size:7vw;
+      background: white
+  }
+  .btn-outline-danger{
+    background: white
+}
+  
+.small-custom-text {
+  font-size:3vw;
+  text-align: center;
+  text-decoration: none;
+}
