@@ -1,17 +1,12 @@
-import {SIGNED_IN, DELETE_ALL } from '../constants';
-export const logUser = (email) =>
-{
+import { SIGNED_IN, DELETE_ALL } from '../constants';
+export const logUser = (email) => {
     return {
         type: SIGNED_IN,
         email
     }
-
 }
 
-
-
-export const deleteAll = () =>
-{
+export const deleteAll = () => {
     return {
         type: DELETE_ALL
     }

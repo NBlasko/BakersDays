@@ -4,34 +4,42 @@
      height:100%;
 }
 
-.btnInline {
+.btn-custom-inline {
     display: inline;
     }
-    .btn-lg{
+
+.btn-lg{
       width: 19.9%;
     }
-    .btn-success{
+
+.btn-success{
       width: 60%;
       font-size:3vw;
   
     }
-    .btn-warning{
+
+.btn-warning{
       width: 39%;
       font-size:3vw;
     }
    
-    .bg-dark{
+.bg-dark{
       padding: 5%;
       line-height: 30%;
       font-size:8vw;
       text-align: center;
       border-radius: 5px;
     }
-  .btn-outline-primary{
+
+.btn-outline-primary{
       font-size:7vw;
+      background: white
   }
+  .btn-outline-danger{
+    background: white
+}
   
-.smallText {
+.small-custom-text {
   font-size:3vw;
   text-align: center;
   text-decoration: none;

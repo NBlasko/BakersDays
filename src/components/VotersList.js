@@ -19,12 +19,19 @@ class VotersList extends Component {
         return (
             <div>
                 <h1 className="text-primary"> Lista pekara </h1>
-                {
-                    bakersArray.map(element =>
-                        <div key={element.vote}><code> Pekar br.{element.vote}</code> ima {element.score} {(element.score === 1) ? "poen " : "poena "}
-                            {(element.score > 0) ? <Button className="btn btn-outline-danger btn-sm" onClick={this.handleClick} id={element.vote} > Umanji </Button> : null}
-                        </div>)
-                }
+                {bakersArray.map(element =>
+                    <div key={element.vote}><code>
+                        Pekar br.{element.vote}</code>
+                        {" "} ima {element.score}
+                        {(element.score === 1) ? " poen " : " poena "}
+                        {(element.score > 0)
+                            ? <Button
+                                className="btn btn-outline-danger btn-sm"
+                                onClick={this.handleClick}
+                                id={element.vote} >
+                                Umanji </Button>
+                            : null}
+                    </div>)}
             </div>
         );
     }
@@ -38,6 +45,5 @@ function mapStateToProps(state) {
 VotersList.propTypes = {
     user: PropTypes.object.isRequired
 }
-
 
 export default connect(mapStateToProps, null)(VotersList);

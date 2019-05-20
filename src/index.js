@@ -12,19 +12,15 @@ import App from './components/App';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 
-
-
 firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
         const { email } = user;
         store.dispatch(logUser(email));
         history.push('./app');
-    }
-    else {
+    } else {
         history.replace('./signin');
     }
-
-})
+});
 
 ReactDOM.render(
     <Provider store={store}>

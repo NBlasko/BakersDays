@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { voteRef } from '../firebase';
 import { connect } from 'react-redux';
-import { Button} from 'reactstrap';
+import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 class AddGoal extends Component {
@@ -9,9 +9,8 @@ class AddGoal extends Component {
         super(props);
         this.state = {
             counters: [],
-            valueCount: ""   
+            valueCount: ""
         }
-
         this.addCount = this.addCount.bind(this);
         this.pushToCounter = this.pushToCounter.bind(this);
         this.deleteDigit = this.deleteDigit.bind(this);
@@ -27,43 +26,53 @@ class AddGoal extends Component {
         this.setState({ counters });
     }
 
-
-
-
     addCount(e) {
-        if (this.state.valueCount.length === 0 && e.target.value === "0") {
-            return;
-        }
-
+        if (this.state.valueCount.length === 0 && e.target.value === "0") return;
         const newValueCount = this.state.valueCount + e.target.value;
         this.setState({ valueCount: newValueCount })
 
     }
-    pushToCounter() {
 
+    pushToCounter() {
         if (this.state.valueCount < 150 && this.state.valueCount !== "") {
             const { user } = this.props;
             voteRef.push({ vote: this.state.valueCount, email: user.email, score: 1 });
             this.setState({ valueCount: "" })
         }
     }
+
     deleteDigit() {
         if (this.state.valueCount.length !== 0)
             this.setState((preState) => ({
                 valueCount: preState.valueCount.slice(0, -1)
             }));
-
-
     }
-    render()
-    {
-    let ButtonArray = Array(10).fill().map((e,i)=> <Button key ={i} className="btn btn-outline-primary btn-lg" onClick={this.addCount} value={i}> {i} </Button>)
+
+    render() {
+        let ButtonArray = Array(10)
+            .fill()
+            .map((e, i) => <Button
+                key={i}
+                className="btn btn-outline-primary btn-lg"
+                onClick={this.addCount}
+                value={i}>
+                {i}
+            </Button>)
+
         return (
             <div>
                 <div className="text-light bg-dark"> Broj: {this.state.valueCount} </div>
                 {ButtonArray}
-                <Button className="btnInline btn-lg" color="warning" onClick={this.deleteDigit} > Obrisi </Button>
-                <Button className="btnInline btn-lg" color="success" onClick={this.pushToCounter}> Unesi </Button>
+                <Button
+                    className="btn-custom-inline btn-lg"
+                    color="warning"
+                    onClick={this.deleteDigit} >
+                    Obrisi </Button>
+                <Button
+                    className="btn-custom-inline btn-lg"
+                    color="success"
+                    onClick={this.pushToCounter}>
+                    Unesi </Button>
             </div>
         );
     }

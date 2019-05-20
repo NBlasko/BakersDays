@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { Link } from 'react-router-dom';
-import { Button, Form, FormGroup, Input, Container, Alert} from 'reactstrap';
+import { Button, Form, FormGroup, Input, Container, Alert } from 'reactstrap';
 
 class SignUp extends Component {
     constructor(props) {
@@ -9,8 +9,9 @@ class SignUp extends Component {
         this.state = {
             email: '',
             password: '',
-            error:
-            { message: '' }
+            error: {
+                message: ''
+            }
         };
         this.signUp = this.signUp.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -18,16 +19,16 @@ class SignUp extends Component {
     }
 
     signUp() {
-
         const { email, password } = this.state;
         firebaseApp.auth().createUserWithEmailAndPassword(email, password)
             .catch(error => { this.setState({ error }) });
     }
+
     handleKeyPress(e) {
         if (e.key === 'Enter') {
-        let { email, password } = this.state;
-        firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-            .catch(error => { this.setState({ error }) });
+            let { email, password } = this.state;
+            firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+                .catch(error => { this.setState({ error }) });
         }
     }
 
@@ -36,20 +37,47 @@ class SignUp extends Component {
     }
 
     render() {
-        let errorMessage = (this.state.error.message !== '') ? <Alert color="warning">{this.state.error.message}</Alert> : null;
+        let errorMessage = (this.state.error.message !== '')
+            ? <Alert color="warning">{this.state.error.message}</Alert>
+            : null;
         return (
-            <div>                
+            <div>
                 <Container>
-                <Form>
-                <h3 className = "text-primary"> Registruj se </h3>
-                <FormGroup> <Input type="email" placeholder="email" name="email" onChange={this.handleChange}  onKeyPress={this.handleKeyPress} /> </FormGroup>
-                <FormGroup> <Input type="password" placeholder="password" name="password" onChange={this.handleChange}  onKeyPress={this.handleKeyPress} /> </FormGroup>
-                <FormGroup> <Button color = "primary" type="button" onClick={() => this.signUp()}> Sign Up </Button> </FormGroup>
-                <FormGroup> <Link to={'./signin'}> Stari korisnik? Prijavi se </Link> </FormGroup>
-                <FormGroup> {errorMessage} </FormGroup>            
-                </Form>
+                    <Form>
+                        <h3 className="text-primary">
+                            Registruj se
+                         </h3>
+                        <FormGroup>
+                            <Input
+                                type="email"
+                                placeholder="email"
+                                name="email"
+                                onChange={this.handleChange}
+                                onKeyPress={this.handleKeyPress} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Input
+                                type="password"
+                                placeholder="password"
+                                name="password"
+                                onChange={this.handleChange}
+                                onKeyPress={this.handleKeyPress} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Button
+                                color="primary"
+                                type="button"
+                                onClick={() => this.signUp()}>
+                                Sign Up </Button>
+                        </FormGroup>
+                        <FormGroup>
+                            <Link to={'./signin'}>
+                                Stari korisnik? Prijavi se
+                            </Link>
+                        </FormGroup>
+                        <FormGroup> {errorMessage} </FormGroup>
+                    </Form>
                 </Container>
-                
             </div>
         );
     }
